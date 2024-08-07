@@ -414,7 +414,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     }
     
     public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        if self.collectionViewLayout.itemSpacing != 0,
+        if self.collectionViewLayout.itemSpacing.isZero == false,
            let function = self.delegate?.pagerViewWillEndDragging(_:targetIndex:) {
             let contentOffset = self.scrollDirection == .horizontal ? targetContentOffset.pointee.x : targetContentOffset.pointee.y
             let targetItem = lround(Double(contentOffset/self.collectionViewLayout.itemSpacing))
